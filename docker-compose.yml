@@ -24,13 +24,13 @@ services:
       ENABLE_MODULES: 'text2vec-cohere,text2vec-huggingface,text2vec-palm,text2vec-openai,generative-openai,generative-cohere,generative-palm,ref2vec-centroid,reranker-cohere,qna-openai'
       CLUSTER_HOSTNAME: 'node1'
   
-  server:
+  api:
     build:
-      context: ./server
+      context: ./api
     ports:
       - "5000:5000"
     volumes:
-      - ./server:/app
+      - ./api:/app
     environment:
       - FLASK_ENV=development
 

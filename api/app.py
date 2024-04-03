@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from retriever import Retriever
 import weaviate
 
-from build_knowledge_base.populate import create_movies_collection, import_movies_data, print_collection_info
+from build_knowledge_base.populate import create_movies_collection, import_movies_data, get_collection_length
 
 app = Flask(__name__)
 
@@ -14,29 +14,30 @@ retriever = Retriever()
 def hello_world() -> str:
     return 'Hello, World!'
 
-# @app.route('/populate')
-# def populate() -> str:
-#     try:
-#         client = weaviate.connect_to_local()
 
-#         create_movies_collection(client)
-#         import_movies_data(client)
-#         print_collection_info(client)
-#         return 'Populated!'
-#     except Exception as e:
-#         return str(e)
-    
-# @app.route('/check-db')
-# def check_db() -> str:
-#     try:
-#         client = weaviate.connect_to_local()
-#         print_collection_info(client)
-#         return 'Checked!'
-#     except Exception as e:
-#         return str(e)
+@app.route('/populate')
+def populate() -> str:
+    try:
+        client = weaviate.connect_to_local(host="weaviate", port=8080)
+
+        create_movies_collection(client)
+        import_movies_data(client)
+        collection_length = get_collection_length(client)
+        return f'Populated Weaviate! Collection length: {collection_length}'
+    except Exception as e:
+        return str(e)
     
 
-# CHECK
+@app.route('/check-db')
+def check_db() -> str:
+    try:
+        client = weaviate.connect_to_local(host="weaviate", port=8080)
+        collection_length = get_collection_length(client)
+        return f'Connected to Weaviate! Collection length: {collection_length}'
+    except Exception as e:
+        return str(e)
+    
+
 @app.route('/get-movies')
 def get_movies():
     try:
@@ -46,7 +47,7 @@ def get_movies():
         return jsonify({'error': str(e)}), 500
 
 
-# CHECK
+# 
 @app.route('/get-movie/<id>')
 def get_movie_by_id(id: str):
     try:
@@ -56,19 +57,17 @@ def get_movie_by_id(id: str):
         return jsonify({'error': str(e)}), 500
 
 
-# CHECK
+# 
 @app.route('/get-movies-by-genre/<genreId>')
 def get_movie_by_genre(genreId: str):
-    """ id is the genre id here """
     try:
-        id = int(genreId)
-        movies = retriever.get_movies_by_genre(id)
+        movies = retriever.get_movies_by_genre(genreId)
         return jsonify(movies)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-# CHECK
+# 
 @app.route('/get-similar-movies/<id>')
 def get_similar_movies(id: str):
     try:
