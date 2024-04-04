@@ -3,3 +3,8 @@
 - own embeddings
 - tv shows/series
 - auth
+
+# todos
+
+- [ ] hooks
+- [ ] readme
