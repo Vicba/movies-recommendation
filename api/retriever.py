@@ -81,6 +81,22 @@ class Retriever():
             return [{"id": o.uuid, "properties": o.properties, "metadata": o.metadata} for o in response.objects]
         except Exception as e:
             raise Exception(f"Could not get similar movies: {str(e)}")
+        
+
+    def search(self, query: str):
+        """ search for movies by a query """
+
+        try:
+            movies = self.client.collections.get("Movies")
+            response = movies.query.bm25(
+                query=query,
+                query_properties=["title"],
+                limit=None
+            )
+
+            return [{"id": o.uuid, "properties": o.properties} for o in response.objects]
+        except Exception as e:
+            raise Exception(f"Could not search for movies: {str(e)}")
 
     
 

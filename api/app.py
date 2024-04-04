@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from retriever import Retriever
 import weaviate
 
@@ -47,7 +47,6 @@ def get_movies():
         return jsonify({'error': str(e)}), 500
 
 
-# 
 @app.route('/get-movie/<id>')
 def get_movie_by_id(id: str):
     try:
@@ -57,7 +56,6 @@ def get_movie_by_id(id: str):
         return jsonify({'error': str(e)}), 500
 
 
-# 
 @app.route('/get-movies-by-genre/<genreId>')
 def get_movie_by_genre(genreId: str):
     try:
@@ -67,7 +65,6 @@ def get_movie_by_genre(genreId: str):
         return jsonify({'error': str(e)}), 500
 
 
-# 
 @app.route('/get-similar-movies/<id>')
 def get_similar_movies(id: str):
     try:
@@ -75,6 +72,17 @@ def get_similar_movies(id: str):
         return jsonify(movies)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    try:
+        movies = retriever.search(query)
+        return jsonify(movies)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 
 
