@@ -20,6 +20,15 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+.bullet::before {
+  content: "•"; /* Unicode character for bullet */
+  display: inline-block;
+  width: 5px; /* Adjust size as needed */
+  text-align: center;
+  margin-right: 2px; /* Adjust spacing as needed */
+  color: #cbd5e1;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -5,7 +5,6 @@ import React from "react";
 import { Bookmark, Clapperboard, Film, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import classnames as cn
 import cn from "classnames";
 
 const NAV_ITEMS = [
@@ -30,12 +29,12 @@ function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed h-[95%] w-[64px] m-5 flex flex-col justify-between items-center my-5 py-8 px-2 bg-primary border border-white rounded-md">
-      <div className="flex flex-col gap-5">
+    <nav className="fixed h-[95%] w-[64px] m-5 flex flex-col justify-between items-center my-5 py-8 px-2 bg-primary rounded-md">
+      <div className="flex flex-col gap-8">
         <Link href="/dashboard">
           <Clapperboard size={28} color="red" />
         </Link>
-        <ul className="flex flex-col gap-4 items-center">
+        <ul className="flex flex-col gap-6 items-center">
           {NAV_ITEMS.map((item) => (
             <Link key={item.name} href={item.href}>
               <item.icon
@@ -57,7 +56,7 @@ function Sidebar() {
         alt="logo"
         width={40}
         height={40}
-        className="w-10 h-10 rounded-full"
+        className="rounded-full"
       />
     </nav>
   );

@@ -19,12 +19,12 @@ class Retriever():
             raise Exception(f"Could not connect to Weaviate: {str(e)}")
 
 
-    def get_movies(self):
+    def get_movies(self, limit: int = 100):
         """ get movies from the database """
         
         try:
             movies = self.client.collections.get("Movies")
-            response = movies.query.fetch_objects(limit=100)
+            response = movies.query.fetch_objects(limit=limit)
             
             return [{"id": o.uuid, "properties": o.properties} for o in response.objects]
         except Exception as e:
