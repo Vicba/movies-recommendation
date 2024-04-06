@@ -1,10 +1,17 @@
 "use client";
 import React from "react";
+import { genres } from "@/utils";
+import { Movie } from "@/utils/types";
+import GenreItems from "@/components/GenreItems";
 
 function Movies() {
   return (
-    <div className=" border border-white flex flex-col gap-12 text-white">
-      <h1>Movies</h1>
+    <div className="flex flex-col gap-12 text-white m-3">
+      <h1 className="text-3xl font-semibold text-white">Movies by genre</h1>
+
+      {Object.entries(genres).map(([id, genre]) => (
+        <GenreItems key={id} id={id} genre={genre} />
+      ))}
     </div>
   );
 }
