@@ -4,26 +4,19 @@ import Link from "next/link";
 import { useBookmarks } from "@/hooks/useBookmarks";
 import { Movie } from "@/utils/types";
 
-type TrendingMovieProps = {
-  movie: {
-    id: number;
-    title: string;
-    year: number;
-    rating: number;
-    genres: string[];
-    backdrop: string;
-  };
-};
+function TrendingMovie({ movie }: { movie: Movie }) {
+  const { backdrop_path, title, release_date, vote_average } = movie.properties;
+  const releaseYear = release_date
+    ? new Date(release_date).getFullYear()
+    : null;
 
-function TrendingMovie({ movie }: TrendingMovieProps) {
-  const { title, year, rating, backdrop } = movie;
   const { bookmarks, handleBookmark } = useBookmarks();
 
   return (
     <div className="relative w-[384px] h-full overflow-hidden rounded-lg">
       <div className="relative  transition-transform duration-300 transform hover:scale-110">
         <img
-          src={`https://image.tmdb.org/t/p/original${backdrop}`}
+          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
           className="w-full h-full object-cover rounded-lg"
         />
@@ -35,9 +28,9 @@ function TrendingMovie({ movie }: TrendingMovieProps) {
         className="absolute bottom-0 left-0 p-4"
       >
         <ul className="flex flex-row gap-1">
-          <p className="text-slate-300">{year}</p>
+          <p className="text-slate-300">{releaseYear}</p>
           <span className="bullet"></span>
-          <p className="text-slate-300">{rating}</p>
+          <p className="text-slate-300">{vote_average}</p>
         </ul>
         <h2 className="text-white cursor-pointer font-semibold">{title}</h2>
       </Link>

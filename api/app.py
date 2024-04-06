@@ -46,7 +46,15 @@ def get_movies():
     try:
         limit_qry = request.args.get('limit')
         limit = int(limit_qry) if limit_qry else 100
-        movies = retriever.get_movies(limit)
+        
+        # Getting the query parameter, or defaulting to None
+        query = request.args.get('query')
+
+        if query:
+            movies = retriever.get_movies(limit, query)
+        else:
+            movies = retriever.get_movies(limit)
+
         return jsonify(movies)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -74,16 +82,6 @@ def get_movie_by_genre(genreId: str):
 def get_similar_movies(id: str):
     try:
         movies = retriever.get_similar_movies(id)
-        return jsonify(movies)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-    
-
-@app.route('/search')
-def search():
-    query = request.args.get('query')
-    try:
-        movies = retriever.search(query)
         return jsonify(movies)
     except Exception as e:
         return jsonify({'error': str(e)}), 500

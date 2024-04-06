@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex bg-dark-blue">
         <Sidebar />
-        <main className="flex-1 ml-24 my-5 mr-4">{children}</main>
+        <main className="flex-1 ml-24 my-5 mr-4 overflow-hidden h-full">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import { useBookmarks } from "@/hooks/useBookmarks";
-import Movie from "@/components/Movie";
+import MovieItem from "@/components/Movie";
 
 function Bookmarks() {
   const { bookmarks } = useBookmarks();
+  console.log("bookmarks: ", bookmarks);
 
-  if (!bookmarks.length) {
+  if (!bookmarks.length || bookmarks.length === 0) {
     return (
       <div className="flex flex-col gap-12 text-white">
         <div className="m-3">
@@ -27,7 +28,7 @@ function Bookmarks() {
         </h1>
         <ul className="flex flex-wrap gap-5">
           {bookmarks.map((bookmark, idx) => (
-            <Movie key={idx} movie={bookmark} />
+            <MovieItem key={idx} movie={bookmark} />
           ))}
         </ul>
       </div>

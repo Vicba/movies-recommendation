@@ -44,9 +44,7 @@ docker exec -it movies-recommendation_backend_1 python populate_db.py
 
 ### todos
 
-- [ ] use real data
-- [ ] fix movie id page
 - [ ] make movies page by genre
 - [ ] make interactive
-- [ ] search functionality
+- [ ] fix bookmarks
 - [ ] embed more properties in weaviate
