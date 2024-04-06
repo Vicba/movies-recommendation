@@ -8,6 +8,7 @@ import { MovieProperties } from "@/utils/types";
 import { genres } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import SimilarItems from "@/components/SimilarItems";
 
 function MoviePage() {
   const { id } = useParams();
@@ -60,6 +61,12 @@ function MoviePage() {
               .join(", ")}
           </p>
           <p className="w-2/3">{movie?.overview}</p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-white">Similar Movies</h2>
+        <div className="flex flex-row gap-4">
+          <SimilarItems id={Array.isArray(id) ? id[0] : id} />
         </div>
       </div>
     </div>

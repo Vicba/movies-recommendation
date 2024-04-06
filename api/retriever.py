@@ -79,7 +79,7 @@ class Retriever():
     
 
 
-    def get_similar_movies(self, id: str, k: int = 3):
+    def get_similar_movies(self, id: str, k: int = 4):
         """ get similar movies to the given movie title """
 
         try:
@@ -97,7 +97,7 @@ class Retriever():
                 return_metadata=wq.MetadataQuery(distance=True)
             )
 
-            return [{"id": o.uuid, "properties": o.properties, "metadata": o.metadata} for o in response.objects]
+            return [{"id": o.uuid, "properties": o.properties} for o in response.objects]
         except Exception as e:
             raise Exception(f"Could not get similar movies: {str(e)}")
         
