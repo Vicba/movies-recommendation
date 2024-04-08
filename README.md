@@ -44,6 +44,5 @@ docker exec -it movies-recommendation_backend_1 python populate_db.py
 
 ### todos
 
-- [ ] make interactive the scroll
 - [ ] fix bookmarks
 - [ ] embed more properties in weaviate (easy)

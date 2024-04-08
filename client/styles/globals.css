@@ -33,4 +33,22 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .scrollbar {
+    padding: 10px 0;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 20px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: #10141f;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #161d2f;
+    border-radius: 100vh;
+  }
 }

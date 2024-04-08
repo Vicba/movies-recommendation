@@ -21,12 +21,9 @@ function GenreItems({ id, genre }: { id: string; genre: string }) {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="h-full">
+    <div className="h-full overflow-x-auto scrollbar">
       <h1 className="text-2xl text-white font-thin mb-5">{genre}</h1>
-      <ul
-        className="flex gap-8"
-        style={{ maxHeight: "300px", overflowY: "auto" }}
-      >
+      <ul className="flex gap-8">
         {movies?.map((movie) => (
           <TrendingMovie key={movie.id} movie={movie} />
         ))}

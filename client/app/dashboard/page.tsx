@@ -17,8 +17,8 @@ function Dashboard() {
   const { data, isLoading, error } = useFetch(
     // only add query if searchQuery is not null
     searchQuery
-      ? `http://localhost:5000/get-movies?limit=8&query=${searchQuery}`
-      : "http://localhost:5000/get-movies?limit=8",
+      ? `http://localhost:5000/get-movies?limit=16&query=${searchQuery}`
+      : "http://localhost:5000/get-movies?limit=16",
     {},
     [debouncedSearchQuery]
   );
@@ -38,7 +38,7 @@ function Dashboard() {
       <div className="flex flex-col gap-12 text-white m-3">
         <Searchbar search={searchQuery} setSearch={setSearchQuery} />
 
-        <div className="">
+        <div>
           <h1 className="text-2xl text-white font-thin mb-5">
             Search results for "{searchQuery}"
           </h1>
@@ -58,16 +58,13 @@ function Dashboard() {
     <div className="flex flex-col gap-12 text-white m-3">
       <Searchbar search={searchQuery} setSearch={setSearchQuery} />
 
-      <div className="h-full">
+      <div className="h-full overflow-x-auto scrollbar">
         <h1 className="text-2xl text-white font-thin mb-5">Trending</h1>
-        <ul
-          className="flex gap-8"
-          style={{ maxHeight: "300px", overflowY: "auto" }}
-        >
-          {movies?.map((movie) => (
+        <div className="flex gap-8">
+          {movies?.slice(0, 8).map((movie) => (
             <TrendingMovie key={movie.id} movie={movie} />
           ))}
-        </ul>
+        </div>
       </div>
 
       <div className="">
@@ -75,7 +72,7 @@ function Dashboard() {
           Recommended for you
         </h1>
         <ul className="flex flex-row flex-wrap gap-5">
-          {movies?.map((movie) => (
+          {movies.slice(8, 16)?.map((movie) => (
             <MovieItem key={movie.id} movie={movie} />
           ))}
         </ul>
