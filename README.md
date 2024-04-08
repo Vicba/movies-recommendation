@@ -18,14 +18,14 @@ git clone https://github.com/Vicba/movies-recommendation.git
 docker-compose up
 ```
 
-3. Populate the database with the movies ???
+3. Populate the database with the movies.
 
 ```bash
-docker exec -it movies-recommendation_backend_1 python populate_db.py
+curl -X GET http://localhost:5000/populate
 ```
 
-3. Open `http://localhost:3000` in your browser
-4. Browse around!
+1. Open `http://localhost:3000` in your browser
+2. Browse around!
 
 ## Technologies
 
@@ -33,16 +33,24 @@ docker exec -it movies-recommendation_backend_1 python populate_db.py
 - Flask
 - Weaviate
 - Docker
+- Huggingface API
 
-## Other
+## The embedding model
+
+The embedding model used is `sentence-transformers/paraphrase-MiniLM-L6-v2` from huggingface. It has 384 dimensions.
+
+If you want to use something else, you can change it in the `/api/build_knowledge_base/embed.py` file.
+Run the python script to generate the csv with embeddings csv in datasets folder.
+
+```bash
+cd api/build_knowledge_base
+python embed.py
+```
 
 ### Things to add
 
-- [ ] use own embeddings
-- [ ] add tv/shows
 - [ ] auth
 
 ### todos
 
-- [ ] fix bookmarks
-- [ ] embed more properties in weaviate (easy)
+- [ ] fix bookmarks7

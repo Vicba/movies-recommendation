@@ -8,6 +8,7 @@ export type MovieProperties = {
   title: string;
   tmdb_id: number;
   vote_average: number;
+  original_language: string;
 };
 
 export type Movie = {

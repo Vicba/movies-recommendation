@@ -31,6 +31,7 @@ def create_movies_collection(client):
             wc.Property(name="release_date", data_type=wc.DataType.DATE),
             wc.Property(name="popularity", data_type=wc.DataType.NUMBER),
             wc.Property(name="tmdb_id", data_type=wc.DataType.INT),
+            wc.Property(name="original_language", data_type=wc.DataType.TEXT),
         ],
         vectorizer_config=wc.Configure.Vectorizer.none(),
     )
@@ -44,8 +45,8 @@ def import_movies_data(client):
         df = pd.read_csv("/app/build_knowledge_base/datasets/movies_data_1990_2024.csv")
         # df = "https://raw.githubusercontent.com/weaviate-tutorials/edu-datasets/main/movies_data_1990_2024.csv"
 
-        # TODO : make my own embeddings of the data
-        embs_url = "https://raw.githubusercontent.com/weaviate-tutorials/edu-datasets/main/movies_data_1990_2024_embeddings.csv"
+        # embs_url = "https://raw.githubusercontent.com/weaviate-tutorials/edu-datasets/main/movies_data_1990_2024_embeddings.csv"
+        embs_url = "/app/build_knowledge_base/datasets/movies_data_1990_2024_embeddings.csv"
         emb_df = pd.read_csv(embs_url)
 
         movies = client.collections.get("Movies")
@@ -65,6 +66,7 @@ def import_movies_data(client):
                     "release_date": release_date,
                     "popularity": movie.popularity,
                     "tmdb_id": movie.id,
+                    "original_language": movie.original_language,
                 }
 
                 # Get the vector
