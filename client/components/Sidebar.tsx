@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 import { Bookmark, Clapperboard, Film, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
@@ -11,7 +10,7 @@ const NAV_ITEMS = [
   {
     name: "Dashboard",
     icon: LayoutDashboard,
-    href: "/dashboard",
+    href: "/",
   },
   {
     name: "Movies",
@@ -51,13 +50,6 @@ function Sidebar() {
           ))}
         </ul>
       </div>
-      <Image
-        src="/portret.png"
-        alt="logo"
-        width={40}
-        height={40}
-        className="rounded-full"
-      />
     </nav>
   );
 }

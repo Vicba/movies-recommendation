@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-// https://github.com/WebDevSimplified/useful-custom-react-hooks/tree/main/src/10-useFetch
-
 const DEFAULT_OPTIONS: RequestInit = {
   headers: { "Content-Type": "application/json" },
 };

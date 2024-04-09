@@ -47,10 +47,6 @@ cd api/build_knowledge_base
 python embed.py
 ```
 
-### Things to add
-
-- [ ] auth
-
 ### todos
 
 - [ ] fix bookmarks7

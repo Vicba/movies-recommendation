@@ -47,7 +47,6 @@ def get_movies():
         limit_qry = request.args.get('limit')
         limit = int(limit_qry) if limit_qry else 100
         
-        # Getting the query parameter, or defaulting to None
         query = request.args.get('query')
 
         if query:

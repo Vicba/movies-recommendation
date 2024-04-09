@@ -1,5 +1,3 @@
-// https://github.com/WebDevSimplified/useful-custom-react-hooks/tree/main/src/23-useCopyToClipboard
-
 import { useState } from "react";
 
 function copyToClipboard(text: string, options?: any): boolean {

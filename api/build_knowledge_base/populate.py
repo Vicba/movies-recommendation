@@ -43,9 +43,7 @@ def import_movies_data(client):
     
     if os.path.exists("/app/build_knowledge_base/datasets/movies_data_1990_2024.csv"):
         df = pd.read_csv("/app/build_knowledge_base/datasets/movies_data_1990_2024.csv")
-        # df = "https://raw.githubusercontent.com/weaviate-tutorials/edu-datasets/main/movies_data_1990_2024.csv"
 
-        # embs_url = "https://raw.githubusercontent.com/weaviate-tutorials/edu-datasets/main/movies_data_1990_2024_embeddings.csv"
         embs_url = "/app/build_knowledge_base/datasets/movies_data_1990_2024_embeddings.csv"
         emb_df = pd.read_csv(embs_url)
 
