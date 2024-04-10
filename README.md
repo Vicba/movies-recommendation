@@ -2,7 +2,7 @@
 
 This is a movie app that uses 680 movies between 1990 and 2024 from TMDB stored in a vector database. The app uses a simple cosine similarity to find the most similar movies (recommendation) to a given movie.
 
-### How to run ?
+## How to run ?
 
 Make sure you have docker installed on your machine!
 
@@ -24,14 +24,8 @@ docker-compose up
 curl -X GET http://localhost:5000/populate
 ```
 
-4. cd into client and run
-
-```bash
-npm run dev
-```
-
-5. Open `http://localhost:3000` in your browser
-6. Browse around!
+4. Open `http://localhost:3000` in your browser
+5. Browse around!
 
 ## Technologies
 
@@ -52,3 +46,8 @@ Run the python script to generate the csv with embeddings csv in datasets folder
 cd api/build_knowledge_base
 python embed.py
 ```
+
+## Learnings
+
+- Learned how to use Weaviate
+- Refresh my knowledge in nextjs & docker

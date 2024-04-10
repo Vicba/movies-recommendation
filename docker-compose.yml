@@ -34,17 +34,15 @@ services:
     environment:
       - FLASK_ENV=development
 
-
-
-  # client:
-  #   build:
-  #     context: ./client
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./client:/app
-  #   environment:
-  #     - NODE_ENV=development
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+    environment:
+      - NODE_ENV=development
 
 
 volumes:
