@@ -24,6 +24,7 @@ export const DEFAULT_MOVIES = [
     backdrop: "/deHMJAi10p2drYjnYi4IbSXpAqV.jpg",
   },
 ];
+
 export const genres = {
   28: "Action",
   12: "Adventure",

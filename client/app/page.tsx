@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import TrendingMovie from "@/components/TrendingMovie";
 import MovieItem from "@/components/Movie";
 import useFetch from "@/hooks/useFetch";
-import { DEFAULT_MOVIES } from "@/utils";
 import { Movie } from "@/utils/types";
 import Searchbar from "@/components/Searchbar";
 import useDebounce from "@/hooks/useDebounce";

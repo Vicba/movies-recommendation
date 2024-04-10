@@ -52,7 +52,3 @@ Run the python script to generate the csv with embeddings csv in datasets folder
 cd api/build_knowledge_base
 python embed.py
 ```
-
-### todos
-
-- [ ] fix bookmarks7

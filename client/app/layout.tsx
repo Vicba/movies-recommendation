@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import Sidebar from "@/components/Sidebar";
+import { BookmarksProvider } from "@/context/BookmarkContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
       <body className="flex bg-dark-blue">
         <Sidebar />
         <main className="flex-1 ml-24 my-5 mr-4 overflow-hidden h-full">
-          {children}
+          <BookmarksProvider> {children}</BookmarksProvider>
         </main>
       </body>
     </html>

@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { DEFAULT_MOVIES } from "@/utils";
-import { Movie } from "@/utils/types";
 import useFetch from "@/hooks/useFetch";
 import { MovieProperties } from "@/utils/types";
 import { genres } from "@/utils";

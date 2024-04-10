@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { genres } from "@/utils";
-import { Movie } from "@/utils/types";
 import GenreItems from "@/components/GenreItems";
 
 function Movies() {

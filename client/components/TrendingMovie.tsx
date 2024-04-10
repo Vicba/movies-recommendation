@@ -1,7 +1,7 @@
 import React from "react";
 import { Bookmark } from "lucide-react";
 import Link from "next/link";
-import { useBookmarks } from "@/hooks/useBookmarks";
+import { useBookmarks } from "@/context/BookmarkContext";
 import { Movie } from "@/utils/types";
 
 function TrendingMovie({ movie }: { movie: Movie }) {
@@ -10,7 +10,17 @@ function TrendingMovie({ movie }: { movie: Movie }) {
     ? new Date(release_date).getFullYear()
     : null;
 
-  const { bookmarks, handleBookmark } = useBookmarks();
+  const { bookmarks, addBookmark, removeBookmark } = useBookmarks();
+
+  const isBookmarked = bookmarks.some((item) => item.id === movie.id);
+
+  const handleBookmarkClick = () => {
+    if (isBookmarked) {
+      removeBookmark(movie.id);
+    } else {
+      addBookmark(movie);
+    }
+  };
 
   return (
     <div className="relative flex-shrink-0 w-[384px] h-full overflow-hidden rounded-lg">
@@ -37,7 +47,7 @@ function TrendingMovie({ movie }: { movie: Movie }) {
 
       <div
         className="absolute top-0 right-0 p-4 cursor-pointer"
-        onClick={() => handleBookmark(movie)}
+        onClick={handleBookmarkClick}
       >
         <Bookmark
           className="text-white"

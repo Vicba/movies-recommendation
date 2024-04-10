@@ -1,12 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useBookmarks } from "@/hooks/useBookmarks";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import React from "react";
 import MovieItem from "@/components/Movie";
+import { useBookmarks } from "@/context/BookmarkContext";
 
 function Bookmarks() {
-  // const { bookmarks } = useBookmarks();
-  const [bookmarks] = useLocalStorage("bookmarks", []);
+  const { bookmarks } = useBookmarks();
 
   if (!bookmarks.length || bookmarks.length === 0) {
     return (
