@@ -14,7 +14,8 @@ export const useBookmarks = () => {
       const newBookmarks = bookmarks.filter((item) => item.id !== movie.id);
       setBookmarks(newBookmarks);
     } else {
-      setBookmarks([...bookmarks, movie]);
+      const updatedBookmarks = [...bookmarks, movie];
+      setBookmarks(updatedBookmarks);
     }
   };
 

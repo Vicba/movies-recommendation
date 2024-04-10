@@ -24,8 +24,14 @@ docker-compose up
 curl -X GET http://localhost:5000/populate
 ```
 
-1. Open `http://localhost:3000` in your browser
-2. Browse around!
+4. cd into client and run
+
+```bash
+npm run dev
+```
+
+5. Open `http://localhost:3000` in your browser
+6. Browse around!
 
 ## Technologies
 

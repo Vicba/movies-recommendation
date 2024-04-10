@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-// import { useBookmarks } from "@/hooks/useBookmarks";
+import React, { useEffect, useState } from "react";
+import { useBookmarks } from "@/hooks/useBookmarks";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import MovieItem from "@/components/Movie";
 
