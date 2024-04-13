@@ -51,3 +51,5 @@ python embed.py
 
 - Learned how to use Weaviate
 - Refresh my knowledge in nextjs & docker
+- Usign huggingface API
+- Project went super smooth with the research and pre-defined scope
